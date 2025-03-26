@@ -1,10 +1,15 @@
 import './App.css'
+import Header from './components/header/Header'
+import UserProvider from './providers/UserProvider'
+
 
 function App() {
 
   return (
     <>
-      CookiFy
+    <UserProvider>
+      <Header />
+    </UserProvider>
     </>
   )
 }
