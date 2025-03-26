@@ -7,9 +7,11 @@ function App() {
 
   return (
     <>
-    <UserProvider>
-      <Header />
-    </UserProvider>
+      <UserProvider>
+        <Header />
+      </UserProvider>
+
+
     </>
   )
 }
