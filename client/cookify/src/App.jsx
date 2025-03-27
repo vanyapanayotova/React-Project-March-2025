@@ -3,7 +3,7 @@ import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
 import UserProvider from './providers/UserProvider'
 import { Routes, Route } from 'react-router'
-import Banner from './components/banner/Banner'
+import Home from './components/home/Home'
 
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
         <Header />
 
         <Routes>
-          <Route index element={<Banner />} />
+          <Route index element={<Home />} />
           {/* <Route path="/games" element={<GameCatalog />} />
                         <Route path="/games/:gameId/details" element={<GameDetails />} />
                         <Route element={<AuthGuard />}>

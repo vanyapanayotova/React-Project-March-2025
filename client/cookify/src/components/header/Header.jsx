@@ -7,7 +7,7 @@ export default function Header() {
         <>
             <nav className="navbar navbar-expand-md navbar-dark bg-dark mb-4" >
                 <div className="container-fluid">
-                    <Link className="navbar-brand fs-3" to="/home">COOKIFY</Link>
+                    <Link className="navbar-brand fs-3" to="/">COOKIFY</Link>
                     <button className="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -16,7 +16,7 @@ export default function Header() {
 
                         <ul className="navbar-nav me-auto mb-2 mb-md-0">
                             <li className="nav-item">
-                                <Link className="nav-link" aria-current="page" to="/home">Home</Link>
+                                <Link className="nav-link" aria-current="page" to="/">Home</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/recipes">Recipes</Link>

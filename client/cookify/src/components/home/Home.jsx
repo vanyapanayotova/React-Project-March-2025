@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import useAuth from "../../hooks/useAuth";
 
-export default function Banner() {
+export default function Home() {
         const { isAuthenticated } = useAuth();
     return (
         <>
