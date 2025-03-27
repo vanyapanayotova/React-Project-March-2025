@@ -6,6 +6,7 @@ import { Routes, Route } from 'react-router'
 import Home from './components/home/Home'
 import Login from './components/user/login/Login'
 import GuestGuard from './components/guards/GuestGuard'
+import Register from './components/user/register/Register'
 
 
 
@@ -21,7 +22,7 @@ function App() {
           <Route index element={<Home />} />
           <Route element={<GuestGuard />}>
             <Route path="/login" element={<Login />} />
-            {/* <Route path="/register" element={<Register />} /> */}
+            <Route path="/register" element={<Register />} />
           </Route>
           {/* <Route path="/games" element={<GameCatalog />} />
                         <Route path="/games/:gameId/details" element={<GameDetails />} />
