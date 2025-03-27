@@ -1,31 +1,28 @@
-import React, { useState } from "react";
-import { useParams, Link } from "react-router";
-import { useRecipe } from "../../../api/recipeApi";
+import React from "react";
+import { useParams, Link, useNavigate } from "react-router";
+import { useDeleteRecipe, useRecipe } from "../../../api/recipeApi";
 import styles from "./CurrentRecipe.module.css";
+import useAuth from "../../../hooks/useAuth";
 
 export default function CurrentRecipe() {
-
-  // const { id } = useParams();
-  // const [recipe, setRecipe] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  // const [isPending, startTransition] = useTransition();
-
-  // useEffect(() => {
-  //   startTransition(() => {
-  //     fetch(`/api/recipes/${id}`)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         setRecipe(data);
-  //         setIsLoading(false);
-  //       })
-  //       .catch((err) => console.error(err));
-  //   });
-  // }, [id]);
-
+  const { deleteRecipe } = useDeleteRecipe();
+  const { userId } = useAuth()
+  const navigate = useNavigate();
   const { recipeId } = useParams();
   const { recipe } = useRecipe(recipeId);
+  const isOwner = userId === recipe._ownerId;
+  
+  const recipeDeleteClickHandler = async () => {
+    const hasConfirm = confirm(`Are you sure you want to delete ${recipe.title} game?`);
 
-  if (isLoading) return <div>Loading...</div>;
+    if (!hasConfirm) {
+      return;
+    }
+
+    await deleteRecipe(recipeId);
+
+    navigate('/recipes');
+  };
 
   return (
     <main>
@@ -65,16 +62,18 @@ export default function CurrentRecipe() {
                   <p><b>Likes:</b> {recipe.subscribers?.length || 0}</p>
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="btn-group">
-                      {recipe.isOwner ? (
+                      {isOwner ? (
                         <>
                           <Link to={`/recipes/${recipe._id}/edit`} className="btn btn-sm btn-outline-secondary">Edit</Link>
-                          <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => console.log('Delete')}>Delete</button>
+                          <button type="button" className="btn btn-sm btn-outline-secondary" onClick={recipeDeleteClickHandler}>Delete</button>
                         </>
                       ) : (
                         recipe.isLoggedIn && !recipe.isLikedByCurrentUser && (
                           <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => console.log('Like')}>Like</button>
                         )
                       )}
+
+
                     </div>
                     <small className="text-muted">Added {new Date(recipe._createdOn).toLocaleDateString()}</small>
                   </div>
