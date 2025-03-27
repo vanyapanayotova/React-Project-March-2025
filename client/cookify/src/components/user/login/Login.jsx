@@ -2,7 +2,7 @@ import { useActionState, useContext } from "react";
 import { Link, useNavigate } from "react-router";
 import { useLogin } from "../../../api/authApi";
 import { UserContext } from "../../../contexts/UserContext";
-import "./style.css";
+import styles from "./login.module.css";
 
 export default function Login() {
     const navigate = useNavigate();
@@ -20,7 +20,7 @@ export default function Login() {
     return (
         <>
             <div className="container">
-                <div className="card mx-auto">
+                <div className={`card mx-auto ${styles.card}`}>
                     <div className="card-body">
                         <h1 className="card-title">Login Form</h1>
                         <h6 className="card-subtitle mb-2 text-muted mb-4">Login to our website to add your cooking recipes.</h6>

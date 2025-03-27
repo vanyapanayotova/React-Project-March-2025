@@ -9,6 +9,9 @@ import GuestGuard from './components/guards/GuestGuard'
 import Register from './components/user/register/Register'
 import AddRecipe from './components/recipe/add-recipe/AddRecipe'
 import AuthGuard from './components/guards/AuthGuard'
+import RecipeList from './components/recipe/recipe-list/RecipeList'
+import Logout from './components/user/logout/Logout'
+import CurrentRecipe from './components/recipe/current-recipe/CurrentRecipe'
 
 
 
@@ -28,11 +31,14 @@ function App() {
           </Route>
           <Route element={<AuthGuard />}>
             <Route path="/add-recipe" element={<AddRecipe />} />
+            <Route path="/logout" element={<Logout />} />
+            <Route path="/recipe/:recipeId" element={<CurrentRecipe />} />
             {/* <Route path="/games/:gameId/edit" element={<GameEdit />} />
-                            <Route path="/logout" element={<Logout />} /> */}
+                             */}
           </Route>
-          {/* <Route path="/games" element={<GameCatalog />} />
-                        <Route path="/games/:gameId/details" element={<GameDetails />} />
+          <Route path="/recipes" element={<RecipeList />} />
+          {/* 
+                        
 
 
                         <Route path="/admin" element={(

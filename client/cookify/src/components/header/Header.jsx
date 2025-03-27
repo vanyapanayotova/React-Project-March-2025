@@ -44,7 +44,7 @@ export default function Header() {
                                         <Link className="nav-link text-end" to="/profile">Profile</Link>
                                     </li>
                                     <li className="nav-item text-end">
-                                        <Link className="nav-link text-end" href="#">Logout</Link>
+                                        <Link className="nav-link text-end" to="/logout">Logout</Link>
                                     </li>
                                 </>)
                                 : (<>

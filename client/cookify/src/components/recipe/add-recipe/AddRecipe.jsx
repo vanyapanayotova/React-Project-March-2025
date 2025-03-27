@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { useCreateRecipe } from "../../../api/recipeApi";
+import styles from "./addRecipe.module.css"
 
 export default function AddRecipe() {
 
@@ -32,7 +33,7 @@ export default function AddRecipe() {
       
         return (
           <div className="container">
-            <div className="card mx-auto">
+            <div className={`card mx-auto ${styles.card}`}>
               <div className="card-body">
                 <h1 className="card-title">Add Recipe</h1>
                 <hr />
