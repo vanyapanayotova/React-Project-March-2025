@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { useRecipes } from "../../../api/recipeApi";
 import { Link } from "react-router";
-import styles from "./RecipeList.module.css";
+import styles from "./MyRecipe.module.css";
 
-const RecipeList = () => {
+const MyRecipes = () => {
     //   const [recipes, setRecipes] = useState([]);
     const [isLoading] = useState(false);
     const { recipes } = useRecipes();
-
-    console.log(recipes)
 
     return (
         <main>
@@ -81,4 +79,4 @@ const RecipeList = () => {
     );
 };
 
-export default RecipeList;
+export default MyRecipes;

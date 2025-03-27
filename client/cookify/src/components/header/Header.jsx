@@ -29,7 +29,7 @@ export default function Header() {
                                             <Link className="nav-link" to="/add-recipe">Add Recipe</Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="/recipes/my">My recipes</Link>
+                                            <Link className="nav-link" to="/my-recipes">My recipes</Link>
                                         </li>
                                     </>
                                 )

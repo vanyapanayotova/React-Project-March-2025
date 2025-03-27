@@ -12,6 +12,7 @@ import AuthGuard from './components/guards/AuthGuard'
 import RecipeList from './components/recipe/recipe-list/RecipeList'
 import Logout from './components/user/logout/Logout'
 import CurrentRecipe from './components/recipe/current-recipe/CurrentRecipe'
+import MyRecipe from './components/recipe/my-recipes/MyRecipes'
 
 
 
@@ -32,7 +33,8 @@ function App() {
           <Route element={<AuthGuard />}>
             <Route path="/add-recipe" element={<AddRecipe />} />
             <Route path="/logout" element={<Logout />} />
-            <Route path="/recipe/:recipeId" element={<CurrentRecipe />} />
+            <Route path="/recipes/:recipeId" element={<CurrentRecipe />} />
+            <Route path="/my-recipes" element={<MyRecipe />} />
             {/* <Route path="/games/:gameId/edit" element={<GameEdit />} />
                              */}
           </Route>
