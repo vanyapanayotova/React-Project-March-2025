@@ -26,10 +26,10 @@ export default function Header() {
                                 ? (
                                     <>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="/add-recipe" tabindex="-1">Add Recipe</Link>
+                                            <Link className="nav-link" to="/add-recipe">Add Recipe</Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="nav-link" to="/recipes/my" tabindex="-1">My recipes</Link>
+                                            <Link className="nav-link" to="/recipes/my">My recipes</Link>
                                         </li>
                                     </>
                                 )
