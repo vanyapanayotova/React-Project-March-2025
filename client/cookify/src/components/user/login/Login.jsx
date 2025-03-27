@@ -2,6 +2,7 @@ import { useActionState, useContext } from "react";
 import { Link, useNavigate } from "react-router";
 import { useLogin } from "../../../api/authApi";
 import { UserContext } from "../../../contexts/UserContext";
+import "./style.css";
 
 export default function Login() {
     const navigate = useNavigate();
@@ -35,7 +36,7 @@ export default function Login() {
 
                             <div className="mb-3">
                                 <label htmlFor="email" className="form-label">Email address</label>
-                                <input type="email" id="email" name="email" placeholder=" " />
+                                <input type="email" id="email" name="email" placeholder=" " className="form-control"/>
 {/* 
 
                                 @if(inputEmail?.touched){
@@ -53,7 +54,7 @@ export default function Login() {
 
                             <div className="mb-3">
                                 <label htmlFor="login-password" className="form-label">Password</label>
-                                <input type="password" id="login-password" name="password" />
+                                <input type="password" id="login-password" name="password" className="form-control"/>
 
 
                                 {/* @if(inputPassword?.touched){
