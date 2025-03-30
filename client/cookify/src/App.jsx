@@ -13,6 +13,7 @@ import RecipeList from './components/recipe/recipe-list/RecipeList'
 import Logout from './components/user/logout/Logout'
 import CurrentRecipe from './components/recipe/current-recipe/CurrentRecipe'
 import MyRecipe from './components/recipe/my-recipes/MyRecipes'
+import EditRecipe from './components/recipe/edit-recipe/EditRecipe'
 
 
 
@@ -34,9 +35,8 @@ function App() {
             <Route path="/add-recipe" element={<AddRecipe />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/recipes/:recipeId" element={<CurrentRecipe />} />
+            <Route path="/recipes/:recipeId/edit" element={<EditRecipe />} />
             <Route path="/my-recipes" element={<MyRecipe />} />
-            {/* <Route path="/games/:gameId/edit" element={<GameEdit />} />
-                             */}
           </Route>
           <Route path="/recipes" element={<RecipeList />} />
           {/* 

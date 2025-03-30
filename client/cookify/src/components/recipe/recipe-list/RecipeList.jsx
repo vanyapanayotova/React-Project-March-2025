@@ -8,8 +8,6 @@ const RecipeList = () => {
     const [isLoading] = useState(false);
     const { recipes } = useRecipes();
 
-    console.log(recipes)
-
     return (
         <main>
             <div className="album py-1 bg-light">

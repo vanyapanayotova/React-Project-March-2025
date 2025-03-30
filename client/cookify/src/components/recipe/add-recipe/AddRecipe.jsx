@@ -21,7 +21,6 @@ export default function AddRecipe() {
       
         const handleSubmit = async (e) => {
           e.preventDefault();
-          console.log("Recipe submitted", form);
 
         //   const recipeData = Object.fromEntries(form);
 

@@ -15,6 +15,7 @@ export const useRecipes = () => {
 };
 
 export const useRecipe = (recipeId) => {
+    // console.log(recipeId);
     const [recipe, setRecipe] = useState({});
 
     useEffect(() => {

@@ -15,7 +15,6 @@ export default function Register() {
         const confirmPassword = formData.get('confirm-password');
 
         if (password !== confirmPassword) {
-            console.log('Password missmatch');
             return;
         }
 
