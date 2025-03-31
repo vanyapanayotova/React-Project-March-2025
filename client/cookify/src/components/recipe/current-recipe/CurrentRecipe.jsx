@@ -3,15 +3,23 @@ import { useParams, Link, useNavigate } from "react-router";
 import { useDeleteRecipe, useRecipe } from "../../../api/recipeApi";
 import styles from "./CurrentRecipe.module.css";
 import useAuth from "../../../hooks/useAuth";
+import { useComments, useCreateComment } from "../../../api/commentApi";
+import { useOptimistic } from "react";
+import { v4 as uuid } from 'uuid';
+import CommentsCreate from "../../comments-create/CommentsCreate";
+import CommentsView from "../../comments-show/CommentsShow";
 
 export default function CurrentRecipe() {
   const { deleteRecipe } = useDeleteRecipe();
-  const { userId } = useAuth()
+  const { email, userId } = useAuth();
   const navigate = useNavigate();
   const { recipeId } = useParams();
   const { recipe } = useRecipe(recipeId);
   const isOwner = userId === recipe._ownerId;
-  
+  const { create } = useCreateComment();
+  const { comments, addComment } = useComments(recipeId)
+  const [optimisticComments, setOptimisticComments] = useOptimistic(comments, (state, newComment) => [...state, newComment]);
+
   const recipeDeleteClickHandler = async () => {
     const hasConfirm = confirm(`Are you sure you want to delete ${recipe.title} game?`);
 
@@ -22,6 +30,31 @@ export default function CurrentRecipe() {
     await deleteRecipe(recipeId);
 
     navigate('/recipes');
+  };
+
+  const commentCreateHandler = async (formData) => {
+    const comment = formData.get('comment');
+
+    // Create optimistic comment
+    const newOptimisticComment = {
+      _id: uuid(),
+      _ownerId: userId,
+      recipeId,
+      comment,
+      pending: true,
+      author: {
+        email,
+      }
+    };
+
+    // Optimistic update
+    setOptimisticComments(newOptimisticComment);
+
+    // Server update
+    const commentResult = await create(recipeId, comment);
+
+    // Local state update
+    addComment({ ...commentResult, author: { email } })
   };
 
   return (
@@ -79,6 +112,20 @@ export default function CurrentRecipe() {
                   </div>
                 </div>
               </div>
+
+              <div className="row row-cols-1">
+                <CommentsView comments={optimisticComments} />
+              </div>
+
+              <div className="row row-cols-1">
+                <CommentsCreate
+                  email={email}
+                  recipeId={recipeId}
+                  onCreate={commentCreateHandler}
+                />
+
+              </div>
+
             </div>
           </div>
         </div>

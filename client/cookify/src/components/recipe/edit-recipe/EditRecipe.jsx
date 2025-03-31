@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 import { useParams, useNavigate, Navigate } from 'react-router';
 import useAuth from "../../../hooks/useAuth";
 import { useEditRecipe, useRecipe } from '../../../api/recipeApi';
+import styles from "./editRecipe.module.css"
 
 const EditRecipe = () => {
 
@@ -89,7 +90,7 @@ const EditRecipe = () => {
 
     return (
         <div className="container">
-            <div className="card mx-auto">
+            <div className={`card mx-auto ${styles.card}`}>
                 <div className="card-body">
                     <h1 className="card-title">Edit recipe</h1>
                     <hr />
