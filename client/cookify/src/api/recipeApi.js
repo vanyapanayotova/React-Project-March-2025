@@ -19,7 +19,7 @@ export const useRecipe = (recipeId) => {
     const [recipe, setRecipe] = useState({});
 
     useEffect(() => {
-        request.get(`${baseUrl}/${recipeId}`).then(setRecipe);
+        request.get(`${baseUrl}/${recipeId}?load=author%3D_ownerId%3Ausers`).then(setRecipe);
     }, [recipeId])
 
     return {

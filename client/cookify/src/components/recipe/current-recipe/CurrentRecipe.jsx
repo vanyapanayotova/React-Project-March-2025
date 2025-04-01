@@ -91,7 +91,7 @@ export default function CurrentRecipe() {
                   <p><b>Products:</b> {recipe.products}</p>
                   <p><b>How to prepare:</b> {recipe.description}</p>
                   <p><b>Publish date:</b> {new Date(recipe._createdOn).toLocaleString()}</p>
-                  <p><b>Published by:</b> {recipe.userId?.username}</p>
+                  <p><b>Published by:</b> {recipe.author?.email}</p>
                   <p><b>Likes:</b> {recipe.subscribers?.length || 0}</p>
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="btn-group">
