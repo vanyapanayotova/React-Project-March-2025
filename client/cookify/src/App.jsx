@@ -16,6 +16,7 @@ import MyRecipe from './components/recipe/my-recipes/MyRecipes'
 import EditRecipe from './components/recipe/edit-recipe/EditRecipe'
 import Profile from './components/user/profile/Profile'
 import { ToastContainer } from 'react-toastify'
+import Error404 from './components/404/error404'
 
 
 
@@ -45,6 +46,7 @@ function App() {
 
           <Route path="/recipes" element={<RecipeList />} />
           <Route path="/recipes/:recipeId" element={<CurrentRecipe />} />
+          <Route path="*" element={<Error404 />} />
           {/*
             <Route path="/admin" element={(
                 <Suspense fallback={<p>Loading...</p>}>
