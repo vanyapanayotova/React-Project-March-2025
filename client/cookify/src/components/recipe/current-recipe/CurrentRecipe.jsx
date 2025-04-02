@@ -90,25 +90,17 @@ export default function CurrentRecipe() {
                 <div className="col">
                   <p><b>Products:</b> {recipe.products}</p>
                   <p><b>How to prepare:</b> {recipe.description}</p>
-                  <p><b>Publish date:</b> {new Date(recipe._createdOn).toLocaleString()}</p>
-                  <p><b>Published by:</b> {recipe.author?.email}</p>
-                  <p><b>Likes:</b> {recipe.subscribers?.length || 0}</p>
+                  <p><b>Published at:</b> {new Date(recipe._createdOn).toLocaleString()}</p>
+                  <p><b>Published by:</b> {recipe.author?.username}</p>
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="btn-group">
-                      {isOwner ? (
+                      {isOwner && (
                         <>
                           <Link to={`/recipes/${recipe._id}/edit`} className="btn btn-sm btn-outline-secondary">Edit</Link>
                           <button type="button" className="btn btn-sm btn-outline-secondary" onClick={recipeDeleteClickHandler}>Delete</button>
                         </>
-                      ) : (
-                        recipe.isLoggedIn && !recipe.isLikedByCurrentUser && (
-                          <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => console.log('Like')}>Like</button>
-                        )
                       )}
-
-
                     </div>
-                    <small className="text-muted">Added {new Date(recipe._createdOn).toLocaleDateString()}</small>
                   </div>
                 </div>
               </div>
