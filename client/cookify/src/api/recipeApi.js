@@ -14,6 +14,17 @@ export const useRecipes = () => {
     return { recipes };
 };
 
+export const useRecipesOfUser = () => {
+    const [recipes, setRecipes] = useState([]);
+    const { userId } = useAuth();
+
+    useEffect(() => {
+        request.get(`${baseUrl}?where=_ownerId%3D%22${userId}%22`).then(setRecipes)
+    }, [userId]);
+
+    return { recipes };
+};
+
 export const useRecipe = (recipeId) => {
     // console.log(recipeId);
     const [recipe, setRecipe] = useState({});

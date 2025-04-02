@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { useRecipes } from "../../../api/recipeApi";
+import { useRecipesOfUser } from "../../../api/recipeApi";
 import { Link } from "react-router";
 import styles from "./MyRecipe.module.css";
 
 const MyRecipes = () => {
     //   const [recipes, setRecipes] = useState([]);
     const [isLoading] = useState(false);
-    const { recipes } = useRecipes();
+    const { recipes } = useRecipesOfUser();
 
     return (
         <main>
