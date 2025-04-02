@@ -11,14 +11,14 @@ export default function Register() {
     const { userLoginHandler } = useUserContext();
 
     const registerHandler = async (formData) => {
-        const { email, password } = Object.fromEntries(formData);
+        const { username, email, password } = Object.fromEntries(formData);
         const confirmPassword = formData.get('confirm-password');
 
         if (password !== confirmPassword) {
             return;
         }
 
-        const authData = await register(email, password);
+        const authData = await register(username, email, password);
         userLoginHandler(authData);
         navigate('/');
     }

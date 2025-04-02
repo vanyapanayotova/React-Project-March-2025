@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import styles from "./profile.module.css";
+import useAuth from "../../../hooks/useAuth";
 
 const Profile = () => {
   const [isEditMode, setIsEditMode] = useState(false);
+  const { email, username } = useAuth();
   const [profileDetails, setProfileDetails] = useState({
     username: "",
     email: "",
@@ -42,9 +44,8 @@ const Profile = () => {
           <hr />
           {!isEditMode ? (
             <div>
-              <p><b>Username:</b> {profileDetails.username}</p>
-              <p><b>Email:</b> {profileDetails.email}</p>
-              <p><b>Phone:</b> {profileDetails.tel}</p>
+              <p><b>Username:</b> {username}</p>
+              <p><b>Email:</b> {email}</p>
               <button className="btn btn-primary" onClick={toggleEditMode}>Edit</button>
             </div>
           ) : (

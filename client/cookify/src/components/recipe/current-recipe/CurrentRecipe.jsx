@@ -21,7 +21,7 @@ export default function CurrentRecipe() {
   const [optimisticComments, setOptimisticComments] = useOptimistic(comments, (state, newComment) => [...state, newComment]);
 
   const recipeDeleteClickHandler = async () => {
-    const hasConfirm = confirm(`Are you sure you want to delete ${recipe.title} game?`);
+    const hasConfirm = confirm(`Are you sure you want to delete ${recipe.title} recipe?`);
 
     if (!hasConfirm) {
       return;
