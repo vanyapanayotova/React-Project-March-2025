@@ -113,12 +113,12 @@ export default function CurrentRecipe() {
                 </div>
               </div>
 
+              <div className="row row-cols-1">
+                <CommentsView comments={optimisticComments} />
+              </div>
+
               {isAuthenticated &&
                 (<>
-                  <div className="row row-cols-1">
-                    <CommentsView comments={optimisticComments} />
-                  </div>
-
                   <div className="row row-cols-1">
                     <CommentsCreate
                       email={email}

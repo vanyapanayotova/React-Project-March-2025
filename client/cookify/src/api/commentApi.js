@@ -14,20 +14,20 @@ function commentsReducer(state, action) {
     }
 };
 
-export const useComments = (gameId) => {
+export const useComments = (recipeId) => {
     const { request } = useAuth();
     // const [comments, setComments] = useState([]);
     const [comments, dispatch] = useReducer(commentsReducer, [])
 
     useEffect(() => {
         const searchParams = new URLSearchParams({
-            where: `gameId="${gameId}"`,
+            where: `recipeId="${recipeId}"`,
             load: `author=_ownerId:users`,
         });
 
         request.get(`${baseUrl}?${searchParams.toString()}`)
             .then(result => dispatch({type: 'GET_ALL', payload: result}))
-    }, [gameId, request]); 
+    }, [recipeId, request]); 
 
     return {
         comments,
@@ -38,9 +38,9 @@ export const useComments = (gameId) => {
 export const useCreateComment = () => {
     const { request } = useAuth();
 
-    const create = (gameId, comment) => {
+    const create = (recipeId, comment) => {
         const commentData = {
-            gameId,
+            recipeId,
             comment,
         };
 
