@@ -28,28 +28,28 @@ function App() {
 
         <Routes>
           <Route index element={<Home />} />
+
           <Route element={<GuestGuard />}>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Route>
+
           <Route element={<AuthGuard />}>
             <Route path="/add-recipe" element={<AddRecipe />} />
             <Route path="/logout" element={<Logout />} />
-            <Route path="/recipes/:recipeId" element={<CurrentRecipe />} />
             <Route path="/recipes/:recipeId/edit" element={<EditRecipe />} />
             <Route path="/my-recipes" element={<MyRecipe />} />
             <Route path="/profile" element={<Profile />} />
           </Route>
+
           <Route path="/recipes" element={<RecipeList />} />
-          {/* 
-                        
-
-
-                        <Route path="/admin" element={(
-                            <Suspense fallback={<p>Loading...</p>}>
-                                <Admin />
-                            </Suspense>
-                        )} /> */}
+          <Route path="/recipes/:recipeId" element={<CurrentRecipe />} />
+          {/*
+            <Route path="/admin" element={(
+                <Suspense fallback={<p>Loading...</p>}>
+                    <Admin />
+                </Suspense>
+            )} /> */}
         </Routes>
 
         <Footer />

@@ -11,7 +11,7 @@ import CommentsView from "../../comments-show/CommentsShow";
 
 export default function CurrentRecipe() {
   const { deleteRecipe } = useDeleteRecipe();
-  const { email, userId } = useAuth();
+  const { email, userId, isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const { recipeId } = useParams();
   const { recipe } = useRecipe(recipeId);
@@ -113,18 +113,21 @@ export default function CurrentRecipe() {
                 </div>
               </div>
 
-              <div className="row row-cols-1">
-                <CommentsView comments={optimisticComments} />
-              </div>
+              {isAuthenticated &&
+                (<>
+                  <div className="row row-cols-1">
+                    <CommentsView comments={optimisticComments} />
+                  </div>
 
-              <div className="row row-cols-1">
-                <CommentsCreate
-                  email={email}
-                  recipeId={recipeId}
-                  onCreate={commentCreateHandler}
-                />
-
-              </div>
+                  <div className="row row-cols-1">
+                    <CommentsCreate
+                      email={email}
+                      recipeId={recipeId}
+                      onCreate={commentCreateHandler}
+                    />
+                  </div>
+                </>)
+              }
 
             </div>
           </div>
