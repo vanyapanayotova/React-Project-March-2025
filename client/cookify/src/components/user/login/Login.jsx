@@ -13,7 +13,7 @@ export default function Login() {
         const values = Object.fromEntries(formData);
         try {
             const authData = await login(values.email, values.password);
-            // userLoginHandler(authData);
+            userLoginHandler(authData);
             toast.success('Successful Login');
             navigate(-1);
         } catch (err) {

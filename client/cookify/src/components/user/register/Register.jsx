@@ -3,6 +3,7 @@ import { useUserContext } from "../../../contexts/UserContext";
 import { useNavigate } from "react-router";
 import { Link } from "react-router";
 import styles from "./register.module.css";
+import { toast } from 'react-toastify';
 
 export default function Register() {
 
@@ -10,18 +11,58 @@ export default function Register() {
     const { register } = useRegister();
     const { userLoginHandler } = useUserContext();
 
+    const validateEmail = (value) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(value);
+    };
+
+    const validateRegister = (username, email, password, confirmPassword) => {
+        if (username.length < 3) {
+            toast.error("Username should be at least 3 chars long!");
+            return false;
+        }
+
+        if (username.length < 3) {
+            toast.error("Username should be at least 3 chars long!");
+            return false;
+        }
+
+        if (!validateEmail(email)) {
+            toast.error("Please enter a valid email address!");
+            return false;
+        }
+
+        if (password.length < 5) {
+            toast.error("Passwords should be at least 5 chars long!");
+            return false;
+        }
+
+        if (password !== confirmPassword) {
+            toast.error("Passwords don't match!");
+            return false;
+        }
+
+        return true;
+    }
+
     const registerHandler = async (formData) => {
         const { username, email, password } = Object.fromEntries(formData);
         const confirmPassword = formData.get('confirm-password');
 
-        if (password !== confirmPassword) {
+        const validated = validateRegister(username, email, password, confirmPassword);
+        if (!validated) {
             return;
         }
 
-        const authData = await register(username, email, password);
-        userLoginHandler(authData);
-        navigate('/');
+        try {
+            const authData = await register(username, email, password);
+            userLoginHandler(authData);
+            navigate('/');
+        } catch (err) {
+            toast.error(err.message);
+        }
     }
+
     return (
         <>
             <div className="container">
