@@ -34,7 +34,7 @@ export default function Register() {
 
                             <div className="mb-3">
                                 <label htmlFor="username" className="form-label">Username</label>
-                                <input type="username" name="username" id="username" className="form-control" />
+                                <input type="username" name="username" id="username" className="form-control" min={3}/>
                             </div>
 
                             <div className="mb-3">

@@ -15,6 +15,7 @@ import CurrentRecipe from './components/recipe/current-recipe/CurrentRecipe'
 import MyRecipe from './components/recipe/my-recipes/MyRecipes'
 import EditRecipe from './components/recipe/edit-recipe/EditRecipe'
 import Profile from './components/user/profile/Profile'
+import { ToastContainer } from 'react-toastify'
 
 
 
@@ -51,6 +52,8 @@ function App() {
                 </Suspense>
             )} /> */}
         </Routes>
+
+        <ToastContainer />
 
         <Footer />
       </UserProvider>
