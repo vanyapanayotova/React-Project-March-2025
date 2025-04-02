@@ -1,4 +1,5 @@
 const request = async (method, url, data, options = {}) => {
+
     if (method !== 'GET') {
         options.method = method;
     }
@@ -30,6 +31,10 @@ const request = async (method, url, data, options = {}) => {
     const responseContentType = response.headers.get('Content-Type');
     if (!responseContentType) {
         return;
+    }
+
+    if (response.status === 404) {
+        window.location.href = "/404";
     }
 
     if (!response.ok) {
